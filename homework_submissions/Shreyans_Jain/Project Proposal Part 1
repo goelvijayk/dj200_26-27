@@ -1,0 +1,51 @@
+Shreyans Jain
+Forecasting Hourly Energy Demand in Seattle
+Presentation and Paper
+
+Problem Statement
+Can I predict how much energy Seattle will need on a given hour, based on weather conditions and holidays?
+
+Why It Matters
+This would matter to local utilities like Seattle City Light, regional operators, energy traders, and policymakers.
+Accurate forecasting allows utilities to rely efficiently on variable energy sources and manage loads effectively during weather shifts.
+If utilities overproduce electricity, then they waste fuel, which costs money.
+Underproducing may lead to blackouts, which pose safety risks and disruption.
+
+What Would Success Look Like
+A success would be an accurate time series prediction that predict Seattle's hourly energy demand a day or two in advance.
+It would utilize historical energy data, local weather, and events.
+
+Data Sources
+1) Hourly Electric Grid Monitor
+www.eia.gov/electricity/gridmonitor/dashboard/electric_overview/regional/REG-NW
+Provides: The EIA provides historical energy load data for the Seattle area.
+Analyzing a long enough timeframe would get us at least 200K rows of data. It is complete and very recent
+Uncertain: Accessing the whole data requires API key which is free to register.
+Excel online cannot open the more than 25MB of data in it.
+It may have missing data, outages, and metering errors.
+
+2) Historical Weather API
+open-meteo.com/en/docs/historical-forecast-api
+Provides: It provides hourly historic weather data for a location of your choosing. I chose Seattle.
+Is complete, recent, and accessible.
+Uncertain: I will need to determine if looking at one location is enough, or if I have to look at multiple.
+If dataset is enreliable, I will use the NOAA/NWS SeaTac Weather History
+
+3) Holidays and Events Calendar
+pypi.org/project/holidays/
+Provides: Thankfully there is a python library that provides a list of recognized holidays and their dates for most countries.
+It is complete, but somewhat recent and accessible.
+Uncertain: Some unrecognized holidays like April Fool's may not be on it. Sport events will not be included.
+It will be hard to weight each holiday, as soem are more common than others.
+
+If data source 1 of Seattle area is too unpredicatable, then I will broaden it and search for the whole Pacific Northwest.
+
+Techniques
+This would require a time series analysis as I am predicting the future by looking at the past.
+I would be using linear regression with energy and with time or weather. Possibly events as well.
+I will use Python and Pandas, though I will need a refresher on them.
+
+Unknowns
+COVID-19 and the rise of remote work may skew the data.
+How does extreme weather or blackouts impact demand on energy?
+Does weather impact data more, or does events impact it more?
